@@ -74,9 +74,9 @@ background: /cover1.jpg
 
 <MLP>
 
-<!-- $$ y = f\left( \sum_{i=1}^{n}x_iw_i + b_i \right) $$ -->
+$$ y = f\left( \sum_{i=1}^{n}x_iw_i + b_i \right) $$
 
-<img src="/神经元数学模型.svg" style="zoom: 120%;" />
+<!-- <img src="/神经元数学模型.svg" style="zoom: 120%;" /> -->
 
 </MLP>
 
@@ -97,19 +97,19 @@ background: /cover1.jpg
 
 多层感知机的数学模型：
 
-<img src="/多层感知机数学模型.svg" style="zoom: 120%;" />
+<!-- <img src="/多层感知机数学模型.svg" style="zoom: 120%;" /> -->
 
-<!-- $$
+$$
 y_{i,j} = \sum\limits_{k,l} {w_{i,j,k,l}}{x_{k,l}}  = \sum\limits_{a,b} {v_{i,j,a,b}}{x_{i + a,i + b}}
-$$ -->
+$$
 
 应用平移不变性与局部性，得到卷积神经网络的数学模型：
 
-<img src="/卷积层数学模型.svg" style="zoom: 120%;" />
+<!-- <img src="/卷积层数学模型.svg" style="zoom: 120%;" /> -->
 
-<!-- $$
+$$
 y_{i,j} = \sum \limits_{a =  -\Delta }^\Delta \sum \limits_{b = -\Delta}^\Delta v_{a,b}x_{i + a,j + b}
-$$ -->
+$$
 
 ---
 
@@ -177,11 +177,11 @@ background: /cover2.jpg
 
 判别器的输出是输入图像是真实图像的概率，这也是一个二分类问题，当输出趋近于 0 时，表示输入图像时生成图像这一类，当输出趋近于 1 时，表示输入图像是真实图像这一类，对于分类问题，一般采用一个交叉熵损失函数:
 
-<!-- $$
+$$
 \min\limits_G \max\limits_D L(G,D) = \mathbb{E}_{x\sim p_r(x)}\left[\log D(x)\right] + \mathbb{E}_{x\sim p_z(x)} \left[\log (1 - D(G(x))) \right]
-$$ -->
+$$
 
-<img src="/GAN_loss.svg" style="zoom: 120%;">
+<!-- <img src="/GAN_loss.svg" style="zoom: 120%;"> -->
 
 判别器的作用是要尽可能的区分真实图像与生成图像，对于输入真实图像，输出要趋近于 1，即$\log D(x)$趋近于$0$，对于输入生成图像，输出要趋近于$0$，即$\log(1-D(G(x)))$趋近于$0$，也就是说判别器要尽可能使表达式的值最大。
 
@@ -195,21 +195,21 @@ $$ -->
 
 使用 Wasserstein 距离来衡量两个数据分布的距离，定义如下式:
 
-<img src="/Wasserstein.svg" style="zoom: 90%;" />
+<!-- <img src="/Wasserstein.svg" style="zoom: 90%;" /> -->
 
-<!--
+
 $$
 W({p_r},{p_g}) = \inf\limits_{\gamma \in \Pi ({p_r},{p_g})} {\mathbb{E}_{(x,y)}}\left[ {\left\| {x - y} \right\|} \right]
 $$
--->
+
 
 基于 Kantorovich-Rubinstein 对偶性，Wasserstein 距离可以变换为:
 
-<img src="/KR对偶.svg" style="zoom: 90%;" />
+<!-- <img src="/KR对偶.svg" style="zoom: 90%;" /> -->
 
-<!-- $$
+$$
 W({p_r},{p_g}) = \frac{1}{K}\mathop {\sup }\limits_{||f|{|_L} \le K} {\mathbb{E}_{x \in {p_r}}}\left[ {f(x)} \right] - {\mathbb{E}_{x \in {p_g}}}\left[ {f(x)} \right]
-$$ -->
+$$
 
 要使得该变换成立，$f$必须满足 K-Lipschitz 连续。
 
@@ -229,27 +229,27 @@ $$ -->
 
 考虑输入一个小批量${x_1},{x_2},...,{x_m}$，对于批量中的每一个张量都有$N$个特征，对于每一个特征，我们求得它在各个批量上的均值与方差:
 
-<img src="/BN_eq1.svg" style="zoom: 75%;">
+<!-- <img src="/BN_eq1.svg" style="zoom: 75%;"> -->
 
-<!-- $$
+$$
 \begin{aligned}
 \mu _j &= \frac{1}{m}\sum\limits_{i = 1}^m x_{i,j} \\
 \sigma _j^2 &= \frac{1}{m}\sum\limits_{i = 1}^m (x_{i,j} - {\mu _j})^2
 \end{aligned}
-$$ -->
+$$
 
 根据计算得到的期望和方差，我们可以得到归一化后的输出:
 
-<img src="/BN_eq2.svg" style="zoom: 75%;" />
+<!-- <img src="/BN_eq2.svg" style="zoom: 75%;" /> -->
 
-<!-- $$
+$$
 \begin{aligned}
 y_{i,j} &= \sum\limits_{i = 1}^m \frac{x_{i,j} - \mu _j}{\sqrt{\sigma ^2} + \epsilon} \\
 y_{i,j} &= \gamma \cdot y_{i,j} + \beta
 \end{aligned}
-$$ -->
+$$
 
-<a href="/slides/end-paper/BN.svg" target="_blank">图示</a>
+<a :style="{position: 'fixed', left: '20px', bottom: '20px'}" href="/slides/end-paper/BN.svg" target="_blank">图示</a>
 
 ---
 
@@ -261,11 +261,11 @@ $$ -->
 
 此处选择 L1 范数作为内容损失函数:
 
-<img src="/内容损失.svg" style="zoom: 90%; margin: 2em auto;">
+<!-- <img src="/内容损失.svg" style="zoom: 90%; margin: 2em auto;"> -->
 
-<!-- $$
+$$
 L_G = L_{GAN} + \lambda L_{content}
-$$ -->
+$$
 
 经过多次实验，$\lambda$ 取 $10^3$ 效果较好。
 
@@ -335,7 +335,7 @@ background: /cover3.jpg
 
 ## 损失函数
 
-<img src="/yolo_loss.svg" style="zoom: 90%; margin: 3em;" />
+<img src="/yolo_loss.svg" style="zoom: 100%; margin: 2em 1em" />
 
 ---
 

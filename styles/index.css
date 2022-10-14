@@ -12,7 +12,17 @@ html.dark {
   --prism-builtin: #db7c84;
   --prism-property: #a0c7e9;
   --prism-keyword: #abd58e;
+  --el-text-color-primary: #f8f8f8
 }
+
+html.dark img {
+  filter: invert(1);
+}
+
+html.dark .el-tabs--card>.el-tabs__header .el-tabs__item {
+  border-bottom: 0;
+}
+
 
 html, body, #app, #page-root {
   font-family: var(--font);
